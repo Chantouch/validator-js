@@ -92,10 +92,10 @@ export default class Messages {
 
   protected _replacePlaceholders(
     rule: Rule,
-    template: string | any,
-    data: ObjectLiteral | any,
+    template: string | string[],
+    data: ObjectLiteral,
   ): string {
-    let message: any
+    let message: string | undefined
     let attribute: string
     if (rule.attribute != null) {
       data.attribute = this._getAttributeName(rule.attribute)
@@ -116,6 +116,6 @@ export default class Messages {
       }
     }
 
-    return message
+    return <string>message
   }
 }

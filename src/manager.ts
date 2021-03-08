@@ -1,4 +1,4 @@
-import { Functions } from '@/interfaces'
+import { Functions, ObjectLiteral } from '@/interfaces'
 import rules from './rules'
 import Rule from './rule'
 import Validator from '~/validator'
@@ -11,7 +11,7 @@ let missedRuleMessage: string | undefined
 export default class Manager {
   private readonly asyncRules: string[]
   private implicitRules: string[]
-  private readonly rules: any
+  private readonly rules: ObjectLiteral
   public missedRuleMessage: string | undefined = missedRuleMessage
   public missedRuleValidator: Functions = missedRuleValidator
 

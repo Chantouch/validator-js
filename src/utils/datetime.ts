@@ -1,3 +1,5 @@
+import { ObjectLiteral } from '~/interfaces'
+
 export function leapYear(year: number): boolean {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
 }
@@ -38,7 +40,7 @@ export function checkFalsePositiveDates(dateString: string): boolean {
   return true
 }
 
-export function isValidDate(dateString: string | any): boolean {
+export function isValidDate(dateString: string): boolean {
   let testDate
   if (typeof dateString === 'number') {
     testDate = new Date(dateString)
@@ -71,7 +73,7 @@ export function isValidDate(dateString: string | any): boolean {
   // First check for the pattern
   const regex_date = /^\d{4}-\d{1,2}-\d{1,2}$/
 
-  if (!regex_date.test(dateString)) {
+  if (!regex_date.test(<string>dateString)) {
     return false
   }
 

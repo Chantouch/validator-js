@@ -14,7 +14,7 @@ export function flattenObject(
     } else {
       let isEmpty = true
       for (const p in current) {
-        if (!Object.hasOwnProperty.call(current, p)) {
+        if (!Object.prototype.hasOwnProperty.call(current, p)) {
           continue
         }
         isEmpty = false

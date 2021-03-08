@@ -7,8 +7,8 @@ export default class Rule {
   private passes: boolean | undefined | void
   private _customMessage?: string
   private readonly async: boolean
-  private ruleValue: any
-  private inputValue: any
+  private ruleValue: string | number | Array<string> | undefined
+  private inputValue: string | number | Array<string> | undefined
   public attribute: string | undefined = ''
   private validator?: Validator
   private missedRuleMessage?: string = Validator.manager.missedRuleMessage
@@ -72,8 +72,8 @@ export default class Rule {
     this.ruleValue = ruleValue
   }
 
-  getParameters(): Array<any> {
-    let value: Array<any> = []
+  getParameters(): Array<string | number> {
+    let value: Array<string | number> = []
 
     if (typeof this.ruleValue === 'string') {
       value = this.ruleValue.split(',')
@@ -102,10 +102,10 @@ export default class Rule {
     }
 
     if (this.validator?._hasNumericRule(this.attribute)) {
-      return parseFloat(value)
+      return parseFloat(<string>value)
     }
 
-    return value.length
+    return <number>value?.length
   }
 
   _getValueType(): number | string {
