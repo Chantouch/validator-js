@@ -23,4 +23,27 @@ describe('lang / messages', function () {
     expect(validator.errors.first('zip')).toEqual('Le nkundla iyadingeka')
     Validator.useLang(oldLang)
   })
+
+  it('should be able to use Khmer', function () {
+    Validator.useLang('kh')
+    const oldLang = Validator.getDefaultLang()
+    const validator = new Validator({ zip: '' }, { zip: 'required' })
+    expect(validator.fails()).toBeTruthy()
+    expect(validator.errors.first('zip')).toEqual('zip ត្រូវតែបញ្ចូលជាដាច់ខាត។')
+    Validator.useLang(oldLang)
+  })
+
+  it('should be able to use Russian', function () {
+    Validator.useLang('ru')
+    const oldLang = Validator.getDefaultLang()
+    const validator = new Validator({ zip: '' }, { zip: 'required' })
+    expect(validator.fails()).toBeTruthy()
+    expect(validator.errors.first('zip')).toEqual(
+      'Поле zip обязательно для заполнения.',
+    )
+    expect(validator.errors.all()).toEqual({
+      zip: ['Поле zip обязательно для заполнения.'],
+    })
+    Validator.useLang(oldLang)
+  })
 })

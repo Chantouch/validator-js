@@ -2,7 +2,7 @@ import Validator from '../validator'
 
 describe('IP Validation rules', () => {
   describe('IPv4 Validation rule', () => {
-    it('should pass localhost ipv4 addres', () => {
+    it('should pass localhost ipv4 address', () => {
       const validator = new Validator(
         {
           ipAddr: '127.0.0.1',
@@ -38,7 +38,7 @@ describe('IP Validation rules', () => {
       expect(validator.passes()).toBeTruthy()
     })
 
-    it('should fail ip address containing non integer octants', () => {
+    it("should fail ip address containing non integer octant's", () => {
       const validator = new Validator(
         {
           ipAddr: '192.fail.33.10',

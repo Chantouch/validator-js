@@ -73,7 +73,7 @@ export default class Validator {
           this._addFailure(rule)
         }
 
-        if (this._shouldStopValidating(attribute, rulePassed)) {
+        if (Validator._shouldStopValidating(attribute, rulePassed)) {
           break
         }
       }
@@ -477,7 +477,7 @@ export default class Validator {
     return <boolean>this.getRule('required').validate(value)
   }
 
-  private _shouldStopValidating(
+  private static _shouldStopValidating(
     attribute: string,
     rulePassed: boolean | void,
   ): boolean {

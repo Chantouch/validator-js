@@ -31,7 +31,7 @@ describe('hex validation rule', function () {
 
   it('should pass with an empty value', function () {
     const validator = new Validator(
-      { olor: '', mongoId: '' },
+      { color: '', mongoId: '' },
       { color: 'hex', mongoId: 'hex' },
     )
 
