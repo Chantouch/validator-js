@@ -130,7 +130,7 @@ export default class Rule {
     }
   }
 
-  setValidator(validator: any): void {
+  setValidator(validator: Validator): void {
     this.validator = validator
   }
 

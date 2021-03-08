@@ -1,6 +1,8 @@
 import { ObjectLiteral } from '@/interfaces'
 
-export function flattenObject(obj: ObjectLiteral): ObjectLiteral {
+export function flattenObject(
+  obj: ObjectLiteral | undefined | null,
+): ObjectLiteral {
   const flattened: ObjectLiteral = {}
 
   function recurse(current: ObjectLiteral, property: string): void {

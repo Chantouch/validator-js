@@ -104,7 +104,6 @@ export default {
    */
   max(this: any, val: string, req: number): boolean {
     const size = this.getSize()
-    console.info('size:', req)
     return size <= req
   },
 

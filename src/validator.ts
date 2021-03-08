@@ -151,7 +151,7 @@ export default class Validator {
     asyncResolvers.fire()
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type,@typescript-eslint/explicit-module-boundary-types
   static setMessages(locale: string, messages: ObjectLiteral) {
     Validator.lang._set(locale, messages)
     return this
@@ -172,7 +172,7 @@ export default class Validator {
   static setAttributeFormatter(fn: Functions): void {
     Validator.attributeFormatter = fn
   }
-  getRule(this: any, name: string): Rule {
+  getRule(name: string): Rule {
     return Validator.manager.make(name, this)
   }
 
@@ -227,7 +227,7 @@ export default class Validator {
     this.errorCount++
   }
 
-  _flattenObject(obj: any): ObjectLiteral {
+  _flattenObject(obj: ObjectLiteral | undefined | null): ObjectLiteral {
     return flattenObject(obj)
   }
 
