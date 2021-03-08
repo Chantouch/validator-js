@@ -3,7 +3,7 @@ import { ObjectLiteral } from '@/interfaces'
 export function flattenObject(obj: ObjectLiteral): ObjectLiteral {
   const flattened: ObjectLiteral = {}
 
-  function recurse(current: ObjectLiteral, property: string) {
+  function recurse(current: ObjectLiteral, property: string): void {
     if (!property && Object.getOwnPropertyNames(current).length === 0) {
       return
     }
@@ -12,6 +12,9 @@ export function flattenObject(obj: ObjectLiteral): ObjectLiteral {
     } else {
       let isEmpty = true
       for (const p in current) {
+        if (!Object.hasOwnProperty.call(current, p)) {
+          continue
+        }
         isEmpty = false
         recurse(current[p], property ? property + '.' + p : p)
       }

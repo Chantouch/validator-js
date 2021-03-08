@@ -66,7 +66,7 @@ export default class Messages {
     return message
   }
 
-  private _getTemplate(rule: Rule) {
+  private _getTemplate(rule: Rule): string {
     const messages = this.messages
     let template = messages.def
     const customMessages = this.customMessages

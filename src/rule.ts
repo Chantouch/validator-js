@@ -66,7 +66,7 @@ export default class Rule {
     attribute: string | undefined,
     inputValue: string | undefined,
     ruleValue: string | undefined,
-  ) {
+  ): void {
     this.attribute = attribute
     this.inputValue = inputValue
     this.ruleValue = ruleValue
@@ -90,7 +90,7 @@ export default class Rule {
     return value
   }
 
-  getSize() {
+  getSize(): number {
     const value = this.inputValue
 
     if (value instanceof Array) {
@@ -108,7 +108,7 @@ export default class Rule {
     return value.length
   }
 
-  _getValueType() {
+  _getValueType(): number | string {
     if (
       typeof this.inputValue === 'number' ||
       this.validator?._hasNumericRule(this.attribute)
@@ -119,7 +119,10 @@ export default class Rule {
     return 'string'
   }
 
-  response(passes?: boolean | void | undefined, message?: string | undefined) {
+  response(
+    passes?: boolean | void | undefined,
+    message?: string | undefined,
+  ): void {
     this.passes = passes === undefined || passes
     this._customMessage = message
     if (typeof this.callback == 'function') {
@@ -131,11 +134,11 @@ export default class Rule {
     this.validator = validator
   }
 
-  isMissed() {
+  isMissed(): boolean {
     return typeof this.fn !== 'function'
   }
 
-  get customMessage() {
+  get customMessage(): string | undefined {
     return this.isMissed() ? this.missedRuleMessage : this._customMessage
   }
 }

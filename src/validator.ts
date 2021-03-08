@@ -27,7 +27,7 @@ export default class Validator {
     input?: ObjectLiteral,
     rules?: ObjectLiteral,
     messages?: ObjectLiteral,
-    attributes?: ObjectLiteral,
+    // attributes?: ObjectLiteral,
   ) {
     const locale = Validator.getDefaultLang()
     Validator.locale = 'en'
@@ -44,7 +44,7 @@ export default class Validator {
 
   check(): boolean {
     for (const attribute in this.rules) {
-      if (!this.rules.hasOwnProperty(attribute)) {
+      if (!Object.hasOwnProperty.call(this.rules, attribute)) {
         continue
       }
       const attributeRules = this.rules[attribute]
@@ -85,7 +85,7 @@ export default class Validator {
   checkAsync(passes?: Functions, fails?: Functions): void {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const _this = this
-    const defaultFn = (arg0: boolean) => arg0
+    const defaultFn = (arg0: boolean): boolean => arg0
     passes = passes || defaultFn
     fails = fails || defaultFn
     const failsOne = function (rule: Rule, message: string): void {
@@ -106,9 +106,9 @@ export default class Validator {
       inputValue: any,
       ruleOptions: ObjectLiteral,
       attribute: string,
-      rule: any,
+      rule: Rule,
     ) {
-      return function () {
+      return function (): void {
         const resolverIndex = asyncResolvers.add(rule)
         rule.validate(inputValue, ruleOptions.value, attribute, function () {
           asyncResolvers.resolve(resolverIndex)
@@ -117,7 +117,7 @@ export default class Validator {
     }
 
     for (const attribute in this.rules) {
-      if (!this.rules.hasOwnProperty(attribute)) {
+      if (!Object.hasOwnProperty.call(this.rules, attribute)) {
         continue
       }
       const attributeRules = this.rules[attribute]
@@ -151,6 +151,7 @@ export default class Validator {
     asyncResolvers.fire()
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   static setMessages(locale: string, messages: ObjectLiteral) {
     Validator.lang._set(locale, messages)
     return this
@@ -183,23 +184,13 @@ export default class Validator {
     Validator.stopOnAttributes = attributes
   }
 
-  static register(
-    name: string,
-    fn: Functions,
-    message?: string,
-    fnReplacement?: string,
-  ): void {
+  static register(name: string, fn: Functions, message?: string): void {
     const locale = Validator.getDefaultLang()
     Validator.manager.register(name, fn)
     Validator.lang._setRuleMessage(locale, name, message)
   }
 
-  static registerImplicit(
-    name: string,
-    fn: Functions,
-    message: string,
-    fnReplacement?: string,
-  ): void {
+  static registerImplicit(name: string, fn: Functions, message: string): void {
     const locale = Validator.getDefaultLang()
     Validator.manager.registerImplicit(name, fn)
     Validator.lang._setRuleMessage(locale, name, message)
@@ -236,7 +227,7 @@ export default class Validator {
     this.errorCount++
   }
 
-  _flattenObject(obj: any) {
+  _flattenObject(obj: any): ObjectLiteral {
     return flattenObject(obj)
   }
 
@@ -425,7 +416,7 @@ export default class Validator {
     for (let i = 0, len = rulesArray.length; i < len; i++) {
       if (typeof rulesArray[i] === 'object') {
         for (const rule in rulesArray[i]) {
-          if (!rulesArray[i].hasOwnProperty(rule)) {
+          if (!Object.hasOwnProperty.call(rulesArray[i], rule)) {
             continue
           }
           rules.push({

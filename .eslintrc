@@ -15,15 +15,9 @@
   },
   "plugins": ["@typescript-eslint", "prettier", "promise", "import"],
   "rules": {
-//    "prettier/prettier": ["error"],
-//    "no-useless-escape": "off",
-//    "@typescript-eslint/explicit-module-boundary-types": "off",
-//    "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": ["error"],
     "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-prototype-builtins": "off",
-    "no-useless-escape": "off"
+    "@typescript-eslint/explicit-function-return-type": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }

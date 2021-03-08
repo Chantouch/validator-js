@@ -69,7 +69,7 @@ export function isValidDate(dateString: string | any): boolean {
   }
 
   // First check for the pattern
-  const regex_date = /^\d{4}\-\d{1,2}\-\d{1,2}$/
+  const regex_date = /^\d{4}-\d{1,2}-\d{1,2}$/
 
   if (!regex_date.test(dateString)) {
     return false
