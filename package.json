@@ -1,0 +1,82 @@
+{
+  "name": "validatorjs",
+  "version": "0.0.1",
+  "description": "Elegant and simple way to build requests for REST API",
+  "main": "dist/validator.js",
+  "types": "dist/validator.d.ts",
+  "scripts": {
+    "lint": "eslint './src/**/*.{js,ts,tsx}'",
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --watchAll",
+    "test:watch:jsdom": "jest --watchAll --env=jsdom",
+    "build": "npm run clean && tsc",
+    "watch": "tsc -w",
+    "start": "npm link && nodemon",
+    "semantic-release": "semantic-release",
+    "prepublish": "npm run build",
+    "clean": "rimraf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chantouch/vue-api-queries.git"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "api",
+    "rest",
+    "query",
+    "builder",
+    "laravel",
+    "validator",
+    "validator-js",
+    "validatorjs"
+  ],
+  "author": {
+    "name": "Chantouch Sek",
+    "email": "chantouchsek.cs83@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chantouch/vue-api-queries/issues"
+  },
+  "homepage": "https://github.com/Chantouch/vue-api-queries#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@types/escape-string-regexp": "^2.0.1",
+    "@types/jest": "^26.0.20",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/node": "^14.14.32",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "husky": "^5.0.9",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.4.1",
+    "ts-jest": "^26.5.3",
+    "typescript": "^4.2.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "module-alias": "^2.2.2"
+  },
+  "_moduleAliases": {
+    "@/*": "dist"
+  }
+}

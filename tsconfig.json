@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["es5", "es6", "es2015", "es2016", "es2017", "es2018", "esnext", "dom"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true,
+    "outDir": "dist",
+    "types": [
+      "@types/node",
+      "@types/jest"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": ["./", "src/**/*"],
+  "exclude": ["node_modules", "**/__tests__/*", "coverage", "dist", "**/interfaces/**"]
+}
