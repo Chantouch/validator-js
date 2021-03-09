@@ -1,5 +1,4 @@
-import 'module-alias/register'
-import { Functions, ObjectLiteral } from '@/interfaces'
+import { Functions, ObjectLiteral } from '../interfaces'
 import Errors from './errors'
 import formatter from './utils/formatter'
 import AsyncResolvers from './asyncResolvers'
@@ -196,7 +195,7 @@ export default class Validator {
     Validator.lang._setRuleMessage(locale, name, message)
   }
 
-  static registerAsync(name: string, fn: Functions, message?: string): void {
+  static registerAsync(name: string, fn?: Functions, message?: string): void {
     const locale = Validator.getDefaultLang()
     Validator.manager.registerAsync(name, fn)
     Validator.lang._setRuleMessage(locale, name, message)

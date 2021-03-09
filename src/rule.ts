@@ -1,4 +1,4 @@
-import { Functions } from '@/interfaces'
+import { Functions } from '../interfaces'
 import Validator from '~/validator'
 
 export default class Rule {

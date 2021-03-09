@@ -1,4 +1,4 @@
-import { ObjectLiteral, Functions } from '@/interfaces'
+import { ObjectLiteral, Functions } from '../interfaces'
 import Rule from './rule'
 import Attributes from './attributes'
 

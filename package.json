@@ -72,11 +72,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "module-alias": "^2.2.2"
-  },
-  "_moduleAliases": {
-    "@/*": "dist"
-  }
+  ]
 }

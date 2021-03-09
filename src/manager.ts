@@ -1,4 +1,4 @@
-import { Functions, ObjectLiteral } from '@/interfaces'
+import { Functions, ObjectLiteral } from '../interfaces'
 import rules from './rules'
 import Rule from './rule'
 import Validator from '~/validator'
@@ -53,7 +53,7 @@ export default class Manager {
     return this.implicitRules.indexOf(name) > -1
   }
 
-  register(name: string, fn: Functions): void {
+  register(name: string, fn?: Functions): void {
     this.rules[name] = fn
   }
 
@@ -62,7 +62,7 @@ export default class Manager {
     this.implicitRules.push(name)
   }
 
-  registerAsync(name: string, fn: Functions): void {
+  registerAsync(name: string, fn?: Functions): void {
     this.register(name, fn)
     this.asyncRules.push(name)
   }

@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@/interfaces/objects'
+import { ObjectLiteral } from '../interfaces'
 
 export default class Errors {
   private readonly errors: ObjectLiteral

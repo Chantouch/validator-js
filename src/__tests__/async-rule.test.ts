@@ -294,11 +294,12 @@ describe('async rule tests', function (this: any) {
     })
   }, 50)
 
-  // it('should throw exception when attempting to validate and no fail or pass callback', function() {
-
-  // 	Validator.registerAsync('username', function() { });
-  // 	const validator = new Validator({ username: 'admin' }, { username: 'username' });
-  // 	expect(validator.passes).to.throw(/^passes expects.*/);
-
-  // });
+  // it('should throw exception when attempting to validate and no fail or pass callback', async () => {
+  //   Validator.registerAsync('username', (arg0) => arg0)
+  //   const validator = new Validator(
+  //     { username: 'admin' },
+  //     { username: 'username' },
+  //   )
+  //   await expect(validator.passes).rejects.toThrow(/^passes expects.*/)
+  // })
 })

@@ -1,4 +1,4 @@
-import { Functions, ObjectLiteral } from '@/interfaces'
+import { Functions, ObjectLiteral } from '../interfaces'
 import Rule from '~/rule'
 
 export default class AsyncResolvers {

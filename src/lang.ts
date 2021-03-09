@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@/interfaces'
+import { ObjectLiteral } from '../interfaces'
 import Messages from './messages'
 
 const requireMethod = require
