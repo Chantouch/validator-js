@@ -18,6 +18,21 @@ describe('required with', function () {
     )
   })
 
+  it('should pass, when required value is null or empty.', function () {
+    const validator = new Validator(
+      {
+        desert: {
+          first: null,
+        },
+        flavour: '',
+      },
+      { flavour: 'required_with:desert.first' },
+    )
+    expect(validator.fails()).toBeFalsy()
+    expect(validator.passes()).toBeTruthy()
+    expect(validator.errors.has('flavour')).toBeFalsy()
+  })
+
   it('should pass', function () {
     const validator = new Validator(
       {

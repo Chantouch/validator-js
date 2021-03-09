@@ -3,7 +3,7 @@ import Validator from '../validator'
 describe('required unless', function () {
   it('should fail', function () {
     const validator = new Validator(
-      { desert: 'icecream', flavour: '' },
+      { desert: 'ice-cream', flavour: '' },
       { flavour: 'required_unless:desert,cake' },
     )
     expect(validator.fails()).toBeTruthy()
@@ -13,9 +13,18 @@ describe('required unless', function () {
     )
   })
 
+  it('should pass, when value 2 is same as value 1.', function () {
+    const validator = new Validator(
+      { desert: 'ice-cream', flavour: 'chocolate' },
+      { flavour: 'required_unless:desert,ice-cream' },
+    )
+    expect(validator.passes()).toBeTruthy()
+    expect(validator.fails()).toBeFalsy()
+  })
+
   it('should pass', function () {
     const validator = new Validator(
-      { desert: 'icecream', flavour: 'chocolate' },
+      { desert: 'ice-cream', flavour: 'chocolate' },
       { flavour: 'required_unless:desert,cake' },
     )
     expect(validator.passes()).toBeTruthy()

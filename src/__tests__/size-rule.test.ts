@@ -44,4 +44,9 @@ describe('size validation rule', function () {
     )
     expect(validator.passes()).toBeTruthy()
   })
+
+  it('should pass with null or empty value', function () {
+    const validator = new Validator({ age: null }, { age: 'numeric|size:321' })
+    expect(validator.passes()).toBeTruthy()
+  })
 })

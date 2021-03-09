@@ -1,5 +1,3 @@
-import { ObjectLiteral } from '~/interfaces'
-
 export function leapYear(year: number): boolean {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
 }
@@ -40,7 +38,7 @@ export function checkFalsePositiveDates(dateString: string): boolean {
   return true
 }
 
-export function isValidDate(dateString: string): boolean {
+export function isValidDate(dateString: any): boolean {
   let testDate
   if (typeof dateString === 'number') {
     testDate = new Date(dateString)
@@ -62,12 +60,8 @@ export function isValidDate(dateString: string): boolean {
      * Eg.  let newDate = new Date('2019-02-29')  // returns as March 01 2020
      * Eg.  let newDate = new Date('2019-04-31')  // returns as April 30 2020
      */
-    if (!checkFalsePositiveDates(dateString)) {
-      return false
-    }
-
     // valid date object and not a february date
-    return true
+    return checkFalsePositiveDates(dateString)
   }
 
   // First check for the pattern

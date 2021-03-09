@@ -44,7 +44,7 @@ export default class Validator {
 
   check(): boolean {
     for (const attribute in this.rules) {
-      if (!Object.hasOwnProperty.call(this.rules, attribute)) {
+      if (!Object.prototype.hasOwnProperty.call(this.rules, attribute)) {
         continue
       }
       const attributeRules = this.rules[attribute]
@@ -237,7 +237,7 @@ export default class Validator {
     }
 
     const keys = path
-      .replace(/\[(\w+)\]/g, '.$1')
+      .replace(/\[(\w+)/g, '.$1')
       .replace(/^\./, '')
       .split('.')
     let copy: any = {}
@@ -338,7 +338,7 @@ export default class Validator {
     const attributeRules = []
 
     if (rulesArray instanceof Array) {
-      rulesArray = this._prepareRulesArray(rulesArray)
+      rulesArray = Validator._prepareRulesArray(rulesArray)
     }
 
     if (typeof rulesArray === 'string') {
@@ -408,7 +408,7 @@ export default class Validator {
     this.messages._setCustom(customMessages)
   }
 
-  private _prepareRulesArray(
+  private static _prepareRulesArray(
     rulesArray: Array<ObjectLiteral>,
   ): Array<ObjectLiteral> {
     const rules: Array<ObjectLiteral> = []

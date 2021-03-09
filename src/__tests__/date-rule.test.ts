@@ -2,7 +2,7 @@ import Validator from '../validator'
 
 describe('date rule', function () {
   it('should pass for correct, parsable date format', function () {
-    const asserts = [
+    const asserts: Array<string | number | Date> = [
       807926400000,
       'Aug 9, 2020',
       'Wed, 09 Aug 2020 00:00:00 GMT',

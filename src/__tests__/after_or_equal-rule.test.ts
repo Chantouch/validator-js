@@ -14,6 +14,32 @@ describe('after or equal rule', function () {
     )
   })
 
+  it('should fails when the date1 is not valid', function () {
+    const validator = new Validator(
+      { date: 'not valid date', date2: '1995-08-09' },
+      { date2: 'after_or_equal:date' },
+    )
+
+    expect(validator.fails()).toBeTruthy()
+    expect(validator.passes()).toBeFalsy()
+    expect(validator.errors.first('date2')).toEqual(
+      'The date2 must be equal or after date.',
+    )
+  })
+
+  it('should fails when the date2 is not valid', function () {
+    const validator = new Validator(
+      { date: '1995-08-09', date2: 'not valid date' },
+      { date2: 'after_or_equal:date' },
+    )
+
+    expect(validator.fails()).toBeTruthy()
+    expect(validator.passes()).toBeFalsy()
+    expect(validator.errors.first('date2')).toEqual(
+      'The date2 must be equal or after date.',
+    )
+  })
+
   it('should pass when the comparing attribute are equal', function () {
     const validator = new Validator(
       { date: '1995-08-09', date2: '1995-08-09' },

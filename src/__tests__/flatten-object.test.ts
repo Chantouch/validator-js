@@ -4,7 +4,7 @@ describe('Validator', function () {
   describe('_flattenObject', function () {
     it('should correctly flatten nested object', function () {
       const asserts = [
-        [undefined, {}],
+        [undefined, {}, { __proto__: 'Hello' }],
         [null, {}],
         [{}, {}],
         [{ foo: null }, { foo: null }],

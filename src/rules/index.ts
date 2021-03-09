@@ -11,7 +11,8 @@ export default {
   required,
   required_if(this: any, val: string, req: string | string[]): boolean {
     req = this.getParameters()
-    if (this.validator._objectPath(this.validator.input, req[0]) === req[1]) {
+    const property = this.validator._objectPath(this.validator.input, req[0])
+    if (property === req[1]) {
       return this.validator.getRule('required').validate(val)
     }
 
@@ -20,7 +21,8 @@ export default {
 
   required_unless(this: any, val: string, req: string | string[]): boolean {
     req = this.getParameters()
-    if (this.validator._objectPath(this.validator.input, req[0]) !== req[1]) {
+    const property = this.validator._objectPath(this.validator.input, req[0])
+    if (property !== req[1]) {
       return this.validator.getRule('required').validate(val)
     }
 
@@ -28,7 +30,8 @@ export default {
   },
 
   required_with(this: any, val: string, req: string): boolean {
-    if (this.validator._objectPath(this.validator.input, req)) {
+    const validated = this.validator._objectPath(this.validator.input, req)
+    if (validated) {
       return this.validator.getRule('required').validate(val)
     }
 
